@@ -1,0 +1,85 @@
+configuration{
+display-drun: "Applications:"; 
+display-window: "Windows:"; 
+drun-display-format: "{icon} {name}"; 
+//font: "JetBrainsMono Nerd Font Medium 10"; 
+font: "JetBrainsMono Nerd Font Medium 16 "; 
+modi: "window,run,drun"; 
+show-icon: true; 
+icon-theme: "Papirus";
+} 
+
+
+*{ 
+
+dark-light-gray: #4c4c4c; 
+//light-blue: #67B7D1; 
+light-blue: #4066E0; 
+background-color: @dark-light-gray;
+
+border: 0;
+margin: 0;
+padding: 0;
+spacing: 0;
+
+}
+
+
+window { 
+width: 30%; 
+}
+
+mainbox{ 
+children: [inputbar, listview]; 
+background-color:@dark-light-gray;  
+} 
+
+
+inputbar{ 
+children: [entry, case-indicator]; 
+padding: 12; 
+} 
+
+
+entry{ 
+border: 0 0 2px 0; 
+border-color: @light-blue; 
+padding:10;
+text-color: white; 
+//background-color:@light-blue; 
+placeholder: "Search..."; 
+} 
+
+
+listview{ 
+lines: 8; 
+//padding: 8 10;
+} 
+
+element{ 
+padding: 7 0; 
+children: [element-icon, element-text];
+spacing: 5px; 
+} 
+
+element-icon { 
+size: 1.8em; 
+} 
+
+element-icon selected{
+background-color:@light-blue; 
+}
+
+element-text{ 
+text-color: white; 
+vertical-align: 0.5; 
+} 
+
+element-text selected { 
+background-color:@light-blue; 
+} 
+
+element selected { 
+background-color:@light-blue; 
+} 
+
