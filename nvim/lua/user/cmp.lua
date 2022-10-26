@@ -1,4 +1,3 @@
-
 -- Pcall makes sure NeoVim doesn't break if cmp or luasnip is not installed/loaded 
 local has_cmp, cmp = pcall (require, "cmp") 
 
@@ -59,14 +58,16 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 						fallback()
 					end
 				end, { "i", "s" }),
+				
+    }), 
 
 
-
-    }),
 		sources = { 
-			{ name = 'nvim_lsp' }, 
 			{ name = 'luasnip' },  
 			{ name = 'buffer' }, 
+			{ name = 'nvim_lsp' }, 
+			{ name = 'vsnip' },  
+		 { name = 'path' },
 		}, 
  
 	}) 
@@ -98,8 +99,9 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
     })
   })
 
-  -- Set up lspconfig.
+	-- Lspconfig
   --local capabilities = require('cmp_nvim_lsp').default_capabilities()
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   --require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
     --capabilities = capabilities
+  --}

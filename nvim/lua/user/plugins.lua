@@ -9,9 +9,16 @@ local ensure_packer = function()
   return false
 end
 
+
 local packer_bootstrap = ensure_packer()
 
-return require('packer').startup(function(use)
+-- Makes sure neovim still works if packer is not here
+local status_packer, packer = pcall(require, "packer")
+if not status_packer then
+  return
+end
+
+return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
 
@@ -25,19 +32,25 @@ return require('packer').startup(function(use)
 			run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 	}
 
+	-- Themes
 	use 'EdenEast/nightfox.nvim' 
+	use 'folke/tokyonight.nvim' 
 
-	use 'folke/tokyonight.nvim'
-  
+
+-- CMP
 	use 'hrsh7th/nvim-cmp'  
 	use 'hrsh7th/cmp-cmdline' 
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'	 
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'L3MON4D3/LuaSnip'
-	use "hrsh7th/cmp-nvim-lsp" 
-	
 
+	
+-- LSP
+	use 'williamboman/mason.nvim'
+	use 'williamboman/mason-lspconfig.nvim'
+	use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+	use 'hrsh7th/cmp-nvim-lsp'  
 
 
   -- Automatically set up your configuration after cloning packer.nvim
