@@ -22,15 +22,36 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
 
+	--Nvim-tree 
+use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional, for file icons
+  },
+  tag = 'nightly' -- optional, updated every week. (see issue #1193)
+}
 	use {
 		'nvim-telescope/telescope.nvim', 
 		tag = '0.1.0'	
-	} 
+	}  
 
+
+
+	-- Treesitter
 	use {
 			'nvim-treesitter/nvim-treesitter',
 			run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 	}
+		 
+use {
+'windwp/nvim-autopairs',
+	config = function() require("nvim-autopairs").setup {} end
+}
+
+use{ "windwp/nvim-ts-autotag"}
+
+		
+ 
 
 	-- Themes
 	use 'EdenEast/nightfox.nvim' 
@@ -43,14 +64,27 @@ return packer.startup(function(use)
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'	 
 	use 'saadparwaiz1/cmp_luasnip'
-	use 'L3MON4D3/LuaSnip'
+	use 'L3MON4D3/LuaSnip'   
+	use "rafamadriz/friendly-snippets"
 
-	
--- LSP
+
+--Comment 
+use 'numToStr/Comment.nvim'
+use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+-- Installing LSP Servers
 	use 'williamboman/mason.nvim'
-	use 'williamboman/mason-lspconfig.nvim'
+	use 'williamboman/mason-lspconfig.nvim' 
+	
+-- LSP 
 	use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
-	use 'hrsh7th/cmp-nvim-lsp'  
+	use 'hrsh7th/cmp-nvim-lsp'    
+	use 'jose-elias-alvarez/typescript.nvim'
+	use 'glepnir/lspsaga.nvim' 
+	 
+	-- formatting and linting
+	use 'jose-elias-alvarez/null-ls.nvim'
+	use 'jayp0521/mason-null-ls.nvim'
 
 
   -- Automatically set up your configuration after cloning packer.nvim
