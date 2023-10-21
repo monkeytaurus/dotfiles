@@ -11,9 +11,12 @@ if not has_cmp then
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+
+local workspace_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 
@@ -24,6 +27,8 @@ local root_dir = require("jdtls.setup").find_root(root_markers)
 if root_dir == "" then
 	return
 end
+
+capabilities = capabilities
 
 local config = {
 	-- The command that starts the language server
@@ -47,15 +52,19 @@ local config = {
 		"java.base/java.lang=ALL-UNNAMED",
 
 		-- 💀
-		"-jar",
-		"/path/to/jdtls_install_location/plugins/org.eclipse.equinox.launcher_VERSION_NUMBER.jar",
+		-- "-jar","$HOME/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar",
+		"-jar", vim.fn.expand("~/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar"),
+
+		-- "/path/to/jdtls_install_location/plugins/org.eclipse.equinox.launcher_VERSION_NUMBER.jar",
 		-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
 		-- Must point to the                                                     Change this to
 		-- eclipse.jdt.ls installation                                           the actual version
 
 		-- 💀
 		"-configuration",
-		"/path/to/jdtls_install_location/config_SYSTEM",
+		"~/.local/share/nvim/mason/packages/jdtls/config_linux/",
+
+		-- "/path/to/jdtls_install_location/config_SYSTEM",
 		-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
 		-- Must point to the                      Change to one of `linux`, `win` or `mac`
 		-- eclipse.jdt.ls installation            Depending on your system.
@@ -63,7 +72,7 @@ local config = {
 		-- 💀
 		-- See `data directory configuration` section in the README
 		"-data",
-		"/path/to/unique/per/project/workspace/folder",
+		vim.fn.expand("~/.cache/jdtls-workspace/") .. workspace_dir,
 	},
 
 	-- 💀
@@ -145,12 +154,6 @@ local config = {
 	-- You need to extend the `bundles` with paths to jar files
 	-- if you want to use additional eclipse.jdt.ls plugins.
 	--
-	-- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
-	--
-	-- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
-	init_options = {
-		bundles = {},
-	},
 }
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
