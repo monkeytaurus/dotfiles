@@ -9,5 +9,5 @@ end
 
 
 indentBlankLine.setup({
-	show_end_of_line = true,
+	show_end = true,
 })

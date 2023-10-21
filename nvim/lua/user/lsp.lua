@@ -73,6 +73,7 @@ lspconfig["rust_analyzer"].setup({
 -- HTML LSP
 lspconfig.html.setup({
 	on_attach = on_attach,
+	-- Cmd refers to running a server from the command line. It is the command that is used to start up the language server. 
 	cmd = { "vscode-html-language-server", "--stdio" },
 	filtypes = { "html" },
 	init_options = {
@@ -147,7 +148,7 @@ typescript.setup({
 	},
 })
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
 	log_level = 2,

@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
@@ -155,6 +160,16 @@ _G.packer_plugins = {
     path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-jdtls"] = {
+    loaded = true,
+    path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/nvim-jdtls",
+    url = "https://github.com/mfussenegger/nvim-jdtls"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -174,6 +189,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
+  },
+  ["nvim-ts-context-commentstring"] = {
+    loaded = true,
+    path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
+    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -204,6 +224,26 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/typescript.nvim",
     url = "https://github.com/jose-elias-alvarez/typescript.nvim"
+  },
+  undotree = {
+    loaded = true,
+    path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
+  },
+  ["vim-better-sml"] = {
+    loaded = true,
+    path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/vim-better-sml",
+    url = "https://github.com/jez/vim-better-sml"
+  },
+  ["vim-maximizer"] = {
+    loaded = true,
+    path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/vim-maximizer",
+    url = "https://github.com/szw/vim-maximizer"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/home/dangerouschicken/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
   }
 }
 

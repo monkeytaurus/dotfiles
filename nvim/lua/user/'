@@ -1,0 +1,8 @@
+local builtin_status, builtin = pcall(require, "telescope.builtin")
+
+if not builtin_status then
+	return
+end
+
+vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
+vim.keymap.set("n", "<leader>ff", builtin.git_files, {})

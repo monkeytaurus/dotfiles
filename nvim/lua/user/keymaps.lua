@@ -31,3 +31,34 @@ keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 -- Move lines in visual mode
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
+
+-- Unbind Exit
+keymap("n", "<C-z>", "<Nop>", opts)
+
+-- Delete highlighted word into void register.
+--Deletes the word under the cursor with changing the unnamed register using blackhole register
+--Paste word over another word without losing it in the paste register. Essentially high and yank first and then highlight over text to past over word. 
+keymap("x", "<leader>p", '"_dP', opts)
+
+-- Yank to system clipboard
+keymap("n", "<leader>y", '"+y', opts)
+
+-- Yanks to system clipboard while in visual mode
+keymap("v", "<leader>y", '" +y ', opts)
+
+-- Yanks whole line into System clipboard
+keymap("n", "<leader>Y", '"+Y', opts)
+
+-- Deleting to blackhole register
+keymap("n", "<leader>d", '"_d', opts)
+keymap("v", "<leader>d", '"_d', opts)
+
+
+
+-- Vim Maximizer
+keymap("n", "<C-w>m", ":MaximizerToggle<CR>", opts)
+
+-- Allow search terms to stay in the middle 
+keymap ("n", "n", "nzzzv", opts)
+keymap ("n", "N", "Nzzzv", opts)
+

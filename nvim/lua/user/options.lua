@@ -19,6 +19,10 @@ vim.opt.title = true
 vim.opt.hlsearch = false
 -- vim.opt.incsearch = true
 vim.opt.completeopt = { menuone, preview }
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = "~/.vim/undo-dir/"
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.clipboard = "unnamedplus"
+
+
