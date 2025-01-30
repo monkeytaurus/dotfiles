@@ -27,14 +27,18 @@ return packer.startup(function(use)
 		requires = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
-		tag = "nightly",              -- optional, updated every week. (see issue #1193)
+		tag = "nightly",          -- optional, updated every week. (see issue #1193)
 	})
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
+		tag = "0.1.4",
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
+
+	-- FZF Native Telescope
+
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- Treesitter
 	use({
@@ -79,6 +83,10 @@ return packer.startup(function(use)
 	-- DAP
 	use("mfussenegger/nvim-dap")
 
+
+
+
+
 	-- LSP
 	use("neovim/nvim-lspconfig") -- Configurations for Nvim LSP
 	use("hrsh7th/cmp-nvim-lsp")
@@ -87,8 +95,8 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-jdtls")
 
 	-- formatting and linting
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("jayp0521/mason-null-ls.nvim")
+	-- use("jose-elias-alvarez/null-ls.nvim")
+	-- use("jayp0521/mason-null-ls.nvim")
 
 	-- tmux
 	use("christoomey/vim-tmux-navigator")
@@ -104,6 +112,7 @@ return packer.startup(function(use)
 
 	-- Vim Buffer Maximizer
 	use("szw/vim-maximizer")
+	use("stevearc/conform.nvim")
 
 
 

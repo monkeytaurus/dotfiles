@@ -24,7 +24,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	-- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -73,7 +73,7 @@ lspconfig["rust_analyzer"].setup({
 -- HTML LSP
 lspconfig.html.setup({
 	on_attach = on_attach,
-	-- Cmd refers to running a server from the command line. It is the command that is used to start up the language server. 
+	-- Cmd refers to running a server from the command line. It is the command that is used to start up the language server.
 	cmd = { "vscode-html-language-server", "--stdio" },
 	filtypes = { "html" },
 	init_options = {
@@ -108,6 +108,7 @@ lspconfig.cssls.setup({
 	capabilities = capabilities,
 	cmd = { "vscode-css-language-server", "--stdio" },
 	filetypes = { "css", "scss", "less" },
+	init_options = { provideFormatter = true },
 	--root_dir = root_pattern("package.json", ".git"),
 	settings = {
 		css = {
@@ -211,6 +212,18 @@ lspconfig.vimls.setup({
 	single_file_support = true,
 })
 
+lspconfig.clangd.setup({
+	capabilities = {
+		offsetEncoding = { "utf-8", "utf-16" },
+		textDocument = {
+			completion = {
+				editsNearCursor = true
+			}
+		}
+	},
 
+	cmd = { "clangd" },
+	filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" }, 
 
-
+	single_file_support = true,
+})

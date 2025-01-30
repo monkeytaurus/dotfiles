@@ -5,13 +5,15 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.pumheight = 10
 vim.opt.showmode = false
-vim.opt.tabstop = 2
+-- vim.opt.tabstop = 2 --[[Use N spaces to represent a tab   ]]
+vim.opt.tabstop = 4 --[[Use N spaces to represent a tab   ]]
 vim.opt.wrap = false
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.fileencoding = "utf-8"
 vim.opt.smartindent = true
-vim.opt.shiftwidth = 2
+-- vim.opt.shiftwidth = 2 --[[Use N spaces for each indentation level  ]]
+vim.opt.shiftwidth = 4
 vim.opt.timeoutlen = 1000
 vim.opt.mouse = "a"
 vim.opt.undofile = false
@@ -24,5 +26,3 @@ vim.opt.undodir = "~/.vim/undo-dir/"
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
-
-
