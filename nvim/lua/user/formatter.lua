@@ -11,7 +11,16 @@ conform.setup({
 		javascript = { "prettier" },
 		css = { "stylelint", "prettier" },
 		pythonf = { "isort", "black" },
+		c = { 'clang_format' },
 	},
+
+	formatters = {
+		clang_format = {
+			command = "clang-format",
+			args = { "--style={BasedOnStyle: Google, IndentWidth: 4}",
+			}
+		}
+	}
 })
 
 vim.keymap.set({ "n", "v" }, "<leader>mp", function()
