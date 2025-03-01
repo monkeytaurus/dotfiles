@@ -10,5 +10,5 @@ PS1='[\u@\h \W]\$ '
 set -o vi
 
 
-export __NV_PRIME_RENDER_OFFLOAD=1
-export __GLX_VENDOR_LIBRARY_NAME=nvidia
+#export __NV_PRIME_RENDER_OFFLOAD=1
+#export __GLX_VENDOR_LIBRARY_NAME=nvidia
