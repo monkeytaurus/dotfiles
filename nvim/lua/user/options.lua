@@ -28,3 +28,4 @@ vim.opt.undodir = "~/.vim/undo-dir/"
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
+vim.opt.scrolloff = 999
