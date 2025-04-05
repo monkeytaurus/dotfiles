@@ -9,7 +9,7 @@ if not cmp_nvim_lsp_status then
   return
 end
 
-local typescript_status, typescript = pcall(require, "typescript")
+local typescript_status, typescript = pcall(require, "ts_ls")
 
 if not typescript_status then
   return
