@@ -48,7 +48,7 @@ return packer.startup(function(use)
 		end,
 	})
 	-- Indent Lines
-	use("lukas-reineke/indent-blankline.nvim")
+	-- use("lukas-reineke/indent-blankline.nvim")
 
 	use({
 		"windwp/nvim-autopairs",
@@ -81,9 +81,14 @@ return packer.startup(function(use)
 	use("williamboman/mason-lspconfig.nvim")
 
 	-- DAP
-	use("mfussenegger/nvim-dap")
+	use("mfussenegger/nvim-dap") 
 
-
+  -- Harpoon
+  use ({
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+    })
 
 
 
