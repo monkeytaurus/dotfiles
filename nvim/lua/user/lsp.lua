@@ -31,10 +31,6 @@ local on_attach = function(client, bufnr)
     }
   })
 
-  local status_ok, ts_ls = pcall(require, "user.ts_ls")
-  if status_ok then
-    ts_ls.setup(on_attach, capabilities)
-  end
 
   local opts = { noremap = true, silent = true }
   vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float, opts)
