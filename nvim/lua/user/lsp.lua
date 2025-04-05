@@ -19,7 +19,7 @@ local on_attach = function(client, bufnr)
 
 
 
-  lspconfig.tsserver.setup({
+  lspconfig.ts_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
