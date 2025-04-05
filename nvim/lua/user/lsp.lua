@@ -9,20 +9,6 @@ if not cmp_nvim_lsp_status then
   return
 end
 
-local typescript_status, typescript = pcall(require, "ts_ls")
-
-if not typescript_status then
-  return
-end
-
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -30,6 +16,34 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+
+
+  lspconfig.tsserver.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+    init_options = {
+      hostInfo = "neovim"
+    },
+    settings = {
+      -- optional tsserver-specific settings
+    }
+  })
+
+  local status_ok, ts_ls = pcall(require, "user.ts_ls")
+  if status_ok then
+    ts_ls.setup(on_attach, capabilities)
+  end
+
+  local opts = { noremap = true, silent = true }
+  vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+  vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+
+  -- Use an on_attach function to only map the following keys
+  -- after the language server attaches to the current buffer
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
@@ -142,13 +156,6 @@ lspconfig.emmet_ls.setup({
   single_file_support = true,
 })
 
---Typescript
-typescript.setup({
-  server = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  },
-})
 
 lspconfig.lua_ls.setup({
   cmd = { "lua-language-server" },
@@ -236,7 +243,7 @@ lspconfig.clangd.setup({
   -- cmd = {
   --   "clangd",
   --   "--clang-tidy",
-  --   '--fallback-style="{IndentWidth: 4, ContinuationIndentWidth: 4, UseTab: Never}"'     -- ✅ Fixes forced indentation
+  --   '--fallback-style="{IndentWidth: 4, ContinuationIndentWidth: 4, UseTab: Never}"'     
   -- },
   --
 
