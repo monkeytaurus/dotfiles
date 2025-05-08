@@ -10,8 +10,10 @@ vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>ht', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>bf', builtin.current_buffer_fuzzy_find, {})
+vim.keymap.set("n", "<space>ff", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 
 require('telescope').load_extension('fzf')
+require("telescope").load_extension "file_browser"
 
 
 --[[Search for a file starting at my home directory.  ]]
