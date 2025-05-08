@@ -10,6 +10,7 @@ vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>ht', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>bf', builtin.current_buffer_fuzzy_find, {})
+vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, {})
 vim.keymap.set("n", "<space>ff", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 
 require('telescope').load_extension('fzf')
