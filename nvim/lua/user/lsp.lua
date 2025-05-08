@@ -18,24 +18,10 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
 
-
-  lspconfig.ts_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
-    init_options = {
-      hostInfo = "neovim"
-    },
-    settings = {
-      -- optional tsserver-specific settings
-    }
-  })
-
-
   local opts = { noremap = true, silent = true }
   vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+  -- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+  -- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
   vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
   -- Use an on_attach function to only map the following keys
@@ -261,3 +247,30 @@ lspconfig.clangd.setup({
 
   single_file_support = true,
 })
+
+lspconfig.ts_ls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = util.root_pattern("package.json", "tsconfig.json", ".git"),
+  cmd = { "typescript-language-server", "--stdio" },
+  init_options = {
+    hostInfo = "neovim"
+  }
+})
+
+lspconfig.eslint.setup({
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  settings = {
+    packageManager = "npm"
+  },
+  root_dir = util.root_pattern(".eslintrc", ".eslintrc.js", "package.json", ".git")
+})
+
+

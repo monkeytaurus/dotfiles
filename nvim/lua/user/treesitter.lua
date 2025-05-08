@@ -1,4 +1,4 @@
-local treesiter_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+local treesiter_ok, treesitter = pcall(require, "ts_context_commentstring")
 
 if not treesiter_ok then
 	return

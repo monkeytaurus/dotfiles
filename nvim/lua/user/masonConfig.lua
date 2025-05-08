@@ -1,4 +1,4 @@
---require("mason").setup()
+require("mason").setup()
 
 local mason_ok, mason = pcall(require, "mason")
 
@@ -31,7 +31,7 @@ mason_lspconfig.setup({
 		"emmet_ls",
 		"html",
 		"pyright",
-		"tsserver",
+		"ts_ls",
 		"bashls",
 		"vimls",
 

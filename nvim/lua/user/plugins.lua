@@ -27,7 +27,6 @@ return packer.startup(function(use)
 		requires = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
-		tag = "nightly",          -- optional, updated every week. (see issue #1193)
 	})
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -81,7 +80,7 @@ return packer.startup(function(use)
 	use("williamboman/mason-lspconfig.nvim")
 
 	-- DAP
-	use("mfussenegger/nvim-dap") 
+	use("mfussenegger/nvim-dap")
 
   -- Harpoon
   use ({
@@ -99,9 +98,6 @@ return packer.startup(function(use)
 	use("glepnir/lspsaga.nvim")
 	use("mfussenegger/nvim-jdtls")
 
-	-- formatting and linting
-	-- use("jose-elias-alvarez/null-ls.nvim")
-	-- use("jayp0521/mason-null-ls.nvim")
 
 	-- tmux
 	use("christoomey/vim-tmux-navigator")
@@ -112,8 +108,6 @@ return packer.startup(function(use)
 	-- Undotree
 	use("mbbill/undotree")
 	--
-	-- SML
-	use("jez/vim-better-sml")
 
 	-- Vim Buffer Maximizer
 	use("szw/vim-maximizer")
