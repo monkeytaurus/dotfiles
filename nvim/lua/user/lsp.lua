@@ -18,7 +18,7 @@ local on_attach = function(client, bufnr)
 
 
   local opts = { noremap = true, silent = true }
-  vim.keymap.set("n", "<leader>di", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float, bufopts)
   -- vim.keymap.set("n", "<leader>i", function()
   --   vim.diagnostic.open_float(0, { scope = "line" })
   -- end, bufopts)
@@ -274,6 +274,7 @@ lspconfig.eslint.setup({
   root_dir = util.root_pattern(".eslintrc", ".eslintrc.js", "package.json", ".git")
 })
 
+
 local mod_cache = nil
 local function get_root(fname)
   if mod_cache and fname:sub(1, #mod_cache) == mod_cache then
@@ -310,4 +311,14 @@ lspconfig.gopls.setup({
       end
     end)
   end,
+})
+
+lspconfig.golangci_lint_ls.setup({
+  on_attach = on_attach,
+  cmd = { 'golangci-lint-langserver' },
+  root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+  init_options = {
+    command = { "golangci-lint", "run", "--output.json.path", "stdout", "--show-stats=false", "--issues-exit-code=1" },
+  },
+
 })
