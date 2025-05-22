@@ -7,8 +7,12 @@ keymap("n", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Oil.nvim 
+keymap("n", "<leader>e", "<CMD>Oil<CR>", opts)
+
+
 -- Nvim-Tree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+-- keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Buffer/Window Switching
 keymap("n", "<C-h>", "<C-w>h", opts)
