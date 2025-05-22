@@ -119,7 +119,6 @@ lspconfig.cssls.setup({
     scss = {
       validate = true,
     },
-
     single_file_support = true,
   },
 })
@@ -273,4 +272,42 @@ lspconfig.eslint.setup({
     packageManager = "npm"
   },
   root_dir = util.root_pattern(".eslintrc", ".eslintrc.js", "package.json", ".git")
+})
+
+local mod_cache = nil
+local function get_root(fname)
+  if mod_cache and fname:sub(1, #mod_cache) == mod_cache then
+    local clients = vim.lsp.get_clients { name = 'gopls' }
+    if #clients > 0 then
+      return clients[#clients].config.root_dir
+    end
+  end
+  return vim.fs.root(fname, 'go.work') or vim.fs.root(fname, 'go.mod') or vim.fs.root(fname, '.git')
+end
+
+lspconfig.gopls.setup({
+  on_attach = on_attach,
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+
+  root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    if mod_cache then
+      on_dir(get_root(fname))
+      return
+    end
+    local cmd = { 'go', 'env', 'GOMODCACHE' }
+    vim.system(cmd, { text = true }, function(output)
+      if output.code == 0 then
+        if output.stdout then
+          mod_cache = vim.trim(output.stdout)
+        end
+        on_dir(get_root(fname))
+      else
+        vim.schedule(function()
+          vim.notify(('[gopls] cmd failed with code %d: %s\n%s'):format(output.code, cmd, output.stderr))
+        end)
+      end
+    end)
+  end,
 })
