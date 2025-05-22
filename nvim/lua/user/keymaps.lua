@@ -8,7 +8,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Oil.nvim 
-keymap("n", "<leader>e", "<CMD>Oil<CR>", opts)
+keymap("n", "-", "<CMD>Oil<CR>", opts)
 
 
 -- Nvim-Tree
