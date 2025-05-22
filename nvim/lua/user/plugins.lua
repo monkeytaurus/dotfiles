@@ -31,7 +31,7 @@ return packer.startup(function(use)
     end,
   })
 
-
+  use('nvim-tree/nvim-web-devicons')
   use({
     "nvim-telescope/telescope.nvim",
     tag = "0.1.4",
