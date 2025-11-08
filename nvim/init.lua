@@ -1,3 +1,4 @@
+vim.deprecate = function() end
 require "user.keymaps"
 require "user.options"
 --require "user.nvim-tree"
@@ -7,10 +8,11 @@ require "user.cmp"
 require "user.masonConfig"
 require "user.lsp"
 require "user.autopairs"
-require "user.nvim-tree"
+-- require "user.nvim-tree"
 require "user.comment"
 require "user.telescope"
 require "user.formatter"
 require "user.harpoon"
 require "user.treesitter"
+require "user.oil"
 
