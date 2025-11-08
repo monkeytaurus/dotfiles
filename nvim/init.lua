@@ -1,3 +1,4 @@
+vim.deprecate = function() end
 require "user.keymaps"
 require "user.options"
 --require "user.nvim-tree"

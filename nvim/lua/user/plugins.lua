@@ -24,6 +24,10 @@ return packer.startup(function(use)
     "nvim-telescope/telescope-file-browser.nvim",
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   })
+
+
+use ({ "nvim-telescope/telescope-live-grep-args.nvim", requires = { "nvim-telescope/telescope.nvim" } })
+
   use({
     "stevearc/oil.nvim",
     config = function()
