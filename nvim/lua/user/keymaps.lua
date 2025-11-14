@@ -8,7 +8,7 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 
-keymap("n", "<Space>", "<Nop>", opts)
+-- keymap("n", "<Space>", "<Nop>", opts)
 -- Oil.nvim
 keymap("n", "-", "<CMD>Oil<CR>", opts)
 
