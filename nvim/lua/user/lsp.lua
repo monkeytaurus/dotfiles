@@ -18,7 +18,7 @@ local on_attach = function(client, bufnr)
 
 
   local opts = { noremap = true, silent = true }
-  vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float, bufopts)
+  -- vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float, bufopts)
 
   vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
