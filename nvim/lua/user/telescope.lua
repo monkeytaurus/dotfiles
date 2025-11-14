@@ -13,7 +13,7 @@ vim.keymap.set('n', '<leader>bf', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, {})
 vim.keymap.set("n", "<space>ff", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 -- vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-vim.keymap.set("n", "<leader>fg", function()
+vim.keymap.set("n", "<leader>fs", function()
   require("telescope").extensions.live_grep_args.live_grep_args({
     cwd = vim.fn.expand("%:p:h"),
   })

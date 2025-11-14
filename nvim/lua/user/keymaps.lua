@@ -1,13 +1,15 @@
 -- Assigning a table to local variable opts
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
 
 -- Remapping Leader Key
-keymap("n", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Oil.nvim 
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
+
+
+keymap("n", "<Space>", "<Nop>", opts)
+-- Oil.nvim
 keymap("n", "-", "<CMD>Oil<CR>", opts)
 
 
@@ -58,13 +60,9 @@ keymap("n", "<leader>d", '"_d', opts)
 keymap("v", "<leader>d", '"_d', opts)
 
 
-
 -- Vim Maximizer
 keymap("n", "<C-w>m", ":MaximizerToggle<CR>", opts)
 
 -- Allow search terms to stay in the middle
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
-
--- Call Cursor Function
-keymap("n", "<leader>cc", ":call cursor(", opts)

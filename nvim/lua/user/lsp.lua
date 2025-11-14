@@ -19,6 +19,7 @@ local on_attach = function(client, bufnr)
 
   local opts = { noremap = true, silent = true }
   vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float, bufopts)
+  --
   -- vim.keymap.set("n", "<leader>i", function()
   --   vim.diagnostic.open_float(0, { scope = "line" })
   -- end, bufopts)
@@ -322,3 +323,6 @@ lspconfig.golangci_lint_ls.setup({
   },
 
 })
+
+
+
