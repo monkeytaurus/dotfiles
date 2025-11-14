@@ -7,6 +7,9 @@ vim.g.maplocalleader = " "
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+vim.keymap.set("n", "<leader>i", function()
+  vim.diagnostic.open_float()
+end, { noremap = true, silent = true })
 
 -- keymap("n", "<Space>", "<Nop>", opts)
 -- Oil.nvim
